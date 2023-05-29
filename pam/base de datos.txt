@@ -1,0 +1,41 @@
+fid int 5
+ele float 9
+time datetime (fulldate)
+name int 4
+modulo int 2
+id_gps int 2
+id_asociad int 4
+observacio bingstring 50
+planilla int 4
+altura_ini int 4
+altura_fin int 4
+lado int 1 (1 = par, 2 = impar)
+id_bbdd int 5	
+obs_data bigstring 50
+circunsf float 3
+diametro float 2
+numeracion_aproximada float 6
+elementos_estranos bool
+descripcion_elementos_estranos bigstr 50
+clavel_del_aire boolean
+ancho_vereda float 3
+dano_en_vereda boolean
+vereda_levantada boolean
+actualizacion date (años de actualizacion {year-year})
+fuente{Datos relevados por alumnos de la escuela industrial}
+
+
+tipo_elementos_estranos		(relacionado tipos {Resudios,}) 
+
+espacio string 11 	(tipo espacio relacionada {ajardinada, con_cazuela, sin_cazuela})
+
+altura int 1 		(lista relacionada {de 6 a 15 metros, hasta 6 metros, })
+
+estado_gen int 1  	(lista relacionada {bueno, malo, regular})
+
+vereda string 5 	(tipos de vereda relacion){Mixta, Embaldosada, buscar mas}
+
+especie_arbol string 19	(especies arbol relacion tabla)
+
+
+calle int 1 		(calles relacion tabla)
