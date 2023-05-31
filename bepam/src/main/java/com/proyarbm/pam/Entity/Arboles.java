@@ -48,7 +48,6 @@ public class Arboles {
     private int vereda_id;
     private int estado_gen_id;
     private int espacio_id;
-    private int test;
     
     public Arboles() {
 
@@ -83,8 +82,7 @@ public class Arboles {
             int especie_arbol_id, 
             int vereda_id, 
             int estado_gen_id, 
-            int espacio_id,
-            int test
+            int espacio_id
         )
         {
         this.ele = ele;
@@ -115,8 +113,7 @@ public class Arboles {
         this.especie_arbol_id = especie_arbol_id;
         this.vereda_id = vereda_id;
         this.estado_gen_id = estado_gen_id;
-        this.espacio_id = espacio_id; 
-        this.test = test;
+        this.espacio_id = espacio_id;
     }
     
    
@@ -355,18 +352,12 @@ public class Arboles {
     } 
         
         
-    public int getEspacioId(){     
+
+    public int getEspacio(){     
        return espacio_id;
     }
     public void setEspacio(int espacio_id){
         this.espacio_id = espacio_id;
-    } 
-
-    public int getTest(){     
-       return test;
-    }
-    public void setTest(int test){
-        this.test = test;
     } 
     
 }

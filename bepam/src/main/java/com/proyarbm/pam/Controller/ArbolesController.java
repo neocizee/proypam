@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -74,8 +75,7 @@ public class ArbolesController {
             dtoarboles.getEspecieArbolId(),
             dtoarboles.getVeredaId(),
             dtoarboles.getEstadoGenId(),
-            dtoarboles.getEspacioId(),
-            dtoarboles.getTest()
+            dtoarboles.getEspacio()
         );
         sarboles.save(arboles);
         
@@ -90,4 +90,46 @@ public class ArbolesController {
         sarboles.delete(id);
         return new ResponseEntity(new Mensaje("Arbol eliminado"), HttpStatus.OK);
     }   
+
+    @PutMapping("/update/{id}")
+    public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody dtoArboles dtoarboles){
+        if(!sarboles.existsById(id))
+            return new ResponseEntity(new Mensaje("El ID no existe"), HttpStatus.BAD_REQUEST);
+        
+        Arboles arboles = sarboles.getOne(id).get();
+        
+        arboles.setEle(dtoarboles.getEle());
+        arboles.setNombre(dtoarboles.getNombre());
+        arboles.setModulo(dtoarboles.getModulo());
+        arboles.setFecha(dtoarboles.getFecha());
+        arboles.setIdGps(dtoarboles.getIdGps());
+        arboles.setIdAsociad(dtoarboles.getIdAsociad());
+        arboles.setObservacion(dtoarboles.getObservacion());
+        arboles.setPlantilla(dtoarboles.getPlantilla());
+        arboles.setAlturaIni(dtoarboles.getAlturaIni());
+        arboles.setAlturaFin(dtoarboles.getAlturaFin());
+        arboles.setLado(dtoarboles.getLado());
+        arboles.setIdBBDD(dtoarboles.getIdBBDD());
+        arboles.setObsData(dtoarboles.getObsData());        
+        arboles.setCircunsf(dtoarboles.getCircunsf());
+        arboles.setDiametro(dtoarboles.getDiametro());
+        arboles.setNumAprox(dtoarboles.getNumAprox());
+        arboles.setRareElements(dtoarboles.getRareElements());
+        arboles.setDescRareElements(dtoarboles.getDescRareElements());
+        arboles.setClavelDelAire(dtoarboles.getClavelDelAire());
+        arboles.setAnchoVereda(dtoarboles.getAnchoVereda());
+        arboles.setVeredaDamage(dtoarboles.getVeredaDamage());
+        arboles.setVeredaLevantada(dtoarboles.getVeredaLevantada());
+        arboles.setActualizacion(dtoarboles.getActualizacion());
+        arboles.setCalleId(dtoarboles.getCalleId());
+        arboles.setAlturaId(dtoarboles.getAlturaId());
+        arboles.setEspecieArbolId(dtoarboles.getEspecieArbolId());
+        arboles.setVeredaId(dtoarboles.getVeredaId());
+        arboles.setEstadoGenId(dtoarboles.getEstadoGenId());
+        arboles.setEspacio(dtoarboles.getEspacio());
+        
+        sarboles.save(arboles);
+        
+        return new ResponseEntity(new Mensaje("Arbol actualizado"), HttpStatus.OK);
+    }
 }

@@ -70,8 +70,6 @@ public class dtoArboles {
     private int estado_gen_id; 
     @NotBlank
     private int espacio_id;
-    @NotBlank
-    private int test;
 
     public dtoArboles(){
     }
@@ -105,8 +103,7 @@ public class dtoArboles {
             int especie_arbol_id, 
             int vereda_id, 
             int estado_gen_id, 
-            int espacio_id,
-            int test
+            int espacio_id
         ){   
         this.ele = ele;
         this.nombre = nombre;
@@ -136,8 +133,7 @@ public class dtoArboles {
         this.especie_arbol_id = especie_arbol_id;
         this.vereda_id = vereda_id;
         this.estado_gen_id = estado_gen_id;
-        this.espacio_id = espacio_id; 
-        this.test = test;
+        this.espacio_id = espacio_id;
     }
 
     
@@ -372,17 +368,11 @@ public class dtoArboles {
     } 
         
         
-    public int getEspacioId(){
+    public int getEspacio(){     
        return espacio_id;
     }
     public void setEspacio(int espacio_id){
         this.espacio_id = espacio_id;
     } 
-
-    public int getTest(){
-       return test;
-    }
-    public void setTest(int test){
-        this.test = test;
-    } 
+    
 }
