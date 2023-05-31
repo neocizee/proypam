@@ -27,6 +27,8 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `altura`
 --
+CREATE DATABASE dbpam;
+use dbpam;
 
 CREATE TABLE `altura` (
   `id` int(11) NOT NULL,
