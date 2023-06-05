@@ -9,6 +9,7 @@ import com.proyarbm.pam.Entity.Arboles;
 import com.proyarbm.pam.Security.Controller.Mensaje;
 import com.proyarbm.pam.Service.Sarboles;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -38,6 +39,9 @@ public class ArbolesController {
         List<Arboles> list = sarboles.list();
         return new ResponseEntity(list, HttpStatus.OK);
     }
+    
+        
+
     
     @PostMapping("/create")
     public ResponseEntity<?> create(@RequestBody dtoArboles dtoarboles){
@@ -89,7 +93,18 @@ public class ArbolesController {
         }
         sarboles.delete(id);
         return new ResponseEntity(new Mensaje("Arbol eliminado"), HttpStatus.OK);
-    }   
+    }
+    
+    @GetMapping("/listaid/{id}")
+    public ResponseEntity<List<Arboles>> getById(@PathVariable("id") int id){
+        if(!sarboles.existsById(id)){
+            return new ResponseEntity(new Mensaje("El ID no existe"), HttpStatus.BAD_REQUEST);
+        } else {
+            Optional<Arboles> optional = sarboles.getById(id);
+            return new ResponseEntity(optional, HttpStatus.OK);
+        }
+    }
+    
 
     @PutMapping("/update/{id}")
     public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody dtoArboles dtoarboles){
