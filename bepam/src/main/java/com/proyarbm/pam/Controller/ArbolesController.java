@@ -7,11 +7,18 @@ package com.proyarbm.pam.Controller;
 import com.proyarbm.pam.Dto.dtoArboles;
 import com.proyarbm.pam.Entity.Arboles;
 import com.proyarbm.pam.Security.Controller.Mensaje;
+import com.proyarbm.pam.Security.Dto.NuevoUsuario;
+import com.proyarbm.pam.Security.Entity.Rol;
+import com.proyarbm.pam.Security.Entity.Usuario;
 import com.proyarbm.pam.Service.Sarboles;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
+import javax.management.relation.RoleStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -40,9 +47,8 @@ public class ArbolesController {
         return new ResponseEntity(list, HttpStatus.OK);
     }
     
-        
-
-    
+            
+            
     @PostMapping("/create")
     public ResponseEntity<?> create(@RequestBody dtoArboles dtoarboles){
         if(dtoarboles.getEle() == 0){
